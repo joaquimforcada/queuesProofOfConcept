@@ -28,7 +28,7 @@ $callback = function($msg){
     $body = unserialize($msg->body);
     $userId = key($body);
     echo $userId, "\n";
-    if(substr($userId,0,1)=='C'){
+    if(substr($userId,0,1)=='A'){
         echo " [x] Ommiting userId = $userId", "\n";
         if(array_key_exists($userId, $aFailures)){
             $aFailures[$userId] = $aFailures[$userId]++;
@@ -36,8 +36,8 @@ $callback = function($msg){
             $aFailures[$userId] = 1;
         }
 
-        if($aFailures[$userId]>100){
-            sleep(2);
+        if($aFailures[$userId]>10){
+            sleep(3);
             $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
             echo " [ok] Forced userId = $userId as ACK", "\n";
             return true;

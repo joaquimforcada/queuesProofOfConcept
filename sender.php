@@ -2,8 +2,8 @@
 
 $usersIds = array('A1', 'A2', 'X3', 'A4', 'A5', 'X6', 'X7', 'A8', 'X9', 'A10');
 
-$base = 2321458;
-$limit = 2521458;
+$base = 1000000;
+$limit = 2000000;
 for($num=$base; $num<$limit; $num++){
     $letra = str_shuffle('AX');
     $usersIds[]= substr($letra,0,1).$num;
